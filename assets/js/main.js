@@ -29,6 +29,7 @@ function selector(item) {
 
 (() => {
    const form = document.querySelector("#form-imc");
+   const inputs = form.querySelectorAll('input');
 
    form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -36,9 +37,11 @@ function selector(item) {
       const altura = document.querySelector("#altura").value;
       const imc = IMC(peso, altura);
 
-      console.log(imc);
-
       const item = verificador(imc);
       selector(item);
+
+      inputs.forEach((element) => {
+         element.blur();
+      })
    });
 })();
